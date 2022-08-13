@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>ChordPro Parser</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <style>
+          * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+          }
+          html,body {
+            height:100%;
+          }
+          textarea {
+            width: 100%;
+          }
+          .navbar {
+            position: absolute;
+            width: 100%;
+          }
+          main, .container-fluid {
+            height:100%;
+          }
+          main {
+            padding-top: 72px;
+          }
+          label {
+            display: block;
+          }
+          canvas.mainCanvas {
+            border: 1px #ccc solid;
+          }
+          .output-content {
+            font-family: Courier New,Courier,monospace;
+          }
+        </style>
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+        <script src="js/parseToText.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/parseToImg.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            ChordPro Parser
+          </a>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="container container-fluid">
+        <div class="row">
+          <div class="col-xs-3">
+            <form class="chordpro-form" method="get" accept-charset="utf-8">
+              <p>Input song in ChordPro format:</p>
+              <label for="">Song Title</label>
+              <input type="text" name="title" class="title" value="百姓" />
+              
+              <label for="">Song Performer</label>
+              <input type="text" name="performer" class="performer" value="吳業坤" />
+              
+              <label for="">Song Composer</label>
+              <input type="text" name="composer" class="composer" value="Larry Wong@Private Zoo " />
+              
+              <label for="">Song Lyricist</label>
+              <input type="text" name="lyricist" class="lyricist" value="黃偉文" />
+              
+              <label for="">Song Key</label>
+              <select name="key" class="key">
+                <option value="C">C</option>
+                <option value="C#/Db">C#/Db</option>
+                <option value="D">D</option>
+                <option value="D#/Eb">D#/Eb</option>
+                <option value="E" selected>E</option>
+                <option value="F">F</option>
+                <option value="F#/Gb">F#/Gb</option>
+                <option value="G">G</option>
+                <option value="G#/Ab">G#/Ab</option>
+                <option value="A">A</option>
+                <option value="A#/Bb">A#/Bb</option>
+                <option value="B">B</option>
+              </select>
+              
+              <label for="">Song Content</label>
+              <textarea name="content" class="content" rows="8" cols="40">
+[F#m] 總有些人在山頂[B] [B]
+[G#m] 總有些人在山[C#m]腳
+明[F#m]日再看 誰[B]換了個位
+[E]上和下 或者倒轉
+
+[C]Twinkle, twinkle, [F]little [C]star,
+[F]How I [C]wonder [G7]wh[G7]at you [C]are!
+[C]Up a[F]bove the [C]world so [G7]high,
+[C]Like a [F]diamond [C]in the [G7]sky.
+[C]Twinkle, twinkle, [F]little [C]star,
+[F]How I [C]wonder [G7]what you [C]are!
+  
+[C]Little, [F]little, [C]little [G7]star,
+[C]Up a[F]bove the [C]clouds so [G7]far,
+[C]How I wonder [F]what you [C]are!
+[F]Little, [C]little, [G7]little [C]star.
+
+|--------------0--0-------------------------------
+</textarea>
+              </form>
+              <button class="btn btn-default btn-parse">Parse</button>
+              <a class="btn btn-default btn-dl">DL as Image</a>
+            </div>
+            <div class="col-xs-9">
+              <p>Output Score:</p>
+              <div class="output-content"></div>
+                <canvas class="mainCanvas"></canvas>
+            </div>
+        </div>
+      </div>
+    </main>
+        
+    </body>
+</html>

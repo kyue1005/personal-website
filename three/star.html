@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Star Three</title>
+        <style>
+            body {margin: 0; padding: 0; overflow: hidden; width: 100%; height: 100%;}
+            .ani-container{
+                background: #000000;
+                padding: 0;
+                margin: 0;
+                overflow: hidden;
+            }
+            .ball-1{ width: 550px; height: 550px; background: red; 
+                -webkit-border-radius: 275px;
+                -moz-border-radius: 275px;
+                border-radius: 275px;}
+            .ball-2{ width: 350px; height: 350px; background: orange;}
+            .ball-3{ width: 250px; height: 250px; background: yellow;}
+            .ball-4{ width: 150px; height: 150px; background: green;}
+            .ball-5{ width: 100px; height: 100px; background: blue;}
+            .ball-6{ width: 50px; height: 50px;
+                -webkit-border-radius: 25px;
+                -moz-border-radius: 25px;
+                border-radius: 25px;}
+        </style>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    </head>
+    <body>
+        <div class="ani-container" style="width: 100%; height: 100%; display: block;"></div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script type="text/javascript" src="js/plugin/greensock/TweenMax.min.js"></script>
+        <script type="text/javascript" src="js/three.min.js"></script>
+        <script type="text/javascript" src="js/CSS3DRenderer.js"></script>
+        <script src="js/THREEx.windowResize.js"></script>
+        <script type="text/javascript" src="js/trackBall.js"></script>
+        <script type="text/javascript" src="js/Stats.js"></script>
+        <script type="text/javascript" src="js/stars.js"></script> 
+    </body>
+</html>

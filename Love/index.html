@@ -1,0 +1,147 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=600, user-scalable=no">
+        <title>Love is...</title>
+        <link rel="StyleSheet" type="text/css" media="screen" href="./style.css">
+        <link href='http://fonts.googleapis.com/css?family=Romanesco' rel='stylesheet' type='text/css'>
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            Kathy, I know about Love, because of God <br>
+            And YOU <br><br><br>
+            Here shows my Love. <br>
+            <table>
+                <tr>
+                    <td></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                </tr>
+                <tr>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                </tr>
+                <tr>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td></td>
+                </tr>
+                 <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td class="red"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="red"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <br>
+            <div id="counter">
+                We've just been through <br>
+                <span id="years"></span> Years
+                <span id="days"></span> Days
+                <span id="hrs"></span> Hours
+                <span id="minutes"></span> Minutes
+                <span id="seconds"></span> Seconds
+            </div>
+        </div>   
+        <script>
+            'use strict';
+            (function ($) {
+                var $pixel = $("table").find("td");
+                setInterval(function () {
+                    $pixel.each(function(){
+                       if ($(this).hasClass('red')) $(this).toggleClass('red orange'); 
+                       else if ($(this).hasClass('orange')) $(this).toggleClass('orange yellow'); 
+                       else if ($(this).hasClass('yellow')) $(this).toggleClass('green orange'); 
+                       else if ($(this).hasClass('green')) $(this).toggleClass('cyan green'); 
+                       else if ($(this).hasClass('cyan')) $(this).toggleClass('blue cyan'); 
+                       else if ($(this).hasClass('blue')) $(this).toggleClass('blue purple'); 
+                       else if ($(this).hasClass('purple')) $(this).toggleClass('red purple'); 
+                    });
+                }, 2000);
+                
+                var minutesLabel = $("#minutes");
+                var secondsLabel = $("#seconds");
+                var hrsLabel = $("#hrs");
+                var daysLabel = $("#days");
+                var yrsLabel = $("#years");
+                var eventdate = new Date("March 25, 2012");
+                
+                var count = 0;
+                var pad = function pad(val){
+                    var valString = val + '';
+                    if(valString.length < 2)
+                    {
+                        return "0" + valString;
+                    }
+                    else
+                    {
+                        return valString;
+                    }
+                }
+                var setTime = function setTime () {
+                    var now = new Date();
+    
+                    count=Math.floor((now.getTime()-eventdate.getTime())/1000);
+                    secondsLabel.html(pad(count%60));
+                    count = Math.floor(count/60);
+                    minutesLabel.html(pad(count%60));
+                    count = Math.floor(count/60);
+                    hrsLabel.html(pad(count%24));
+                    count = Math.floor(count/24);
+                    
+                    if (count >= 365){
+                        daysLabel.html(count - 365*Math.floor(count/365));
+                    }else{
+                        daysLabel.html(count);
+                    }
+                    count = Math.floor(count/365);
+                    yrsLabel.html(count);
+                }
+                setInterval(setTime, 1000);
+            })(jQuery);
+        </script>
+    </body>
+</html>

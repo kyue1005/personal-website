@@ -1,0 +1,146 @@
+<html>
+	<head>
+		<title>Shader</title>
+		<style>
+			#container {
+				background: #000;
+				width: 400px;
+				height: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container"></div>
+		<script type="x-shader/x-vertex" id="vertexShader">
+			uniform float amplitude;
+			attribute float displacement;
+			varying vec3 vNormal;
+
+			void main() {
+
+				vNormal = normal;
+
+				// multiply our displacement by
+				// the amplitude. The amp will
+				// get animated so we'll have
+				// animated displacement
+				vec3 newPosition =
+						position +
+						normal * vec3(displacement *	amplitude);
+
+				gl_Position = projectionMatrix *
+				            modelViewMatrix *
+				            vec4(newPosition, 1.0);
+			}
+        </script>
+        <script type="x-shader/x-fragment" id="fragmentShader">
+        	varying vec3 vNormal;
+			void main() {
+
+			  // calc the dot product and clamp
+			  // 0 -> 1 rather than -1 -> 1
+			  vec3 light = vec3(0.5, 0.2, 1.0);
+
+			  // ensure it's normalized
+			  light = normalize(light);
+
+			  // calculate the dot product of
+			  // the light to the vertex normal
+			  float dProd = max(0.0, dot(vNormal, light));
+
+			  // feed into our frag colour
+			  gl_FragColor = vec4(dProd, // R
+			                      dProd, // G
+			                      dProd, // B
+			                      1.0);  // A
+
+			}
+        </script> 
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script type="text/javascript" src="js/three.min.js"></script>
+        <script type="text/javascript">
+			// set the scene size
+			var WIDTH = 400,
+			    HEIGHT = 300;
+
+			var attributes = {
+				displacement: {
+					type: 'f', // a float
+					value: [] // an empty array
+				}
+			};
+			var uniforms = {
+				amplitude: {
+					type: 'f', // a float
+					value: 0
+				}
+			};
+
+			// set some camera attributes
+			var VIEW_ANGLE = 45,
+			    ASPECT = WIDTH / HEIGHT,
+			    NEAR = 0.1,
+			    FAR = 10000;
+			var renderer = null, camera, scene;
+
+			// get the DOM element to attach to
+			// - assume we've got jQuery to hand
+			var $container = $('#container');
+
+			init();
+			animate();
+
+			function init() {
+		        camera = new THREE.PerspectiveCamera(  VIEW_ANGLE,
+	                                ASPECT,
+	                                NEAR,
+	                                FAR  );
+        		camera.position.z = 300;
+
+		        scene = new THREE.Scene();
+
+				var shaderMaterial = new THREE.ShaderMaterial({
+					uniforms:       uniforms,
+					attributes:     attributes,
+					vertexShader: document.getElementById( 'vertexShader' ).textContent,
+					fragmentShader: document.getElementById( 'fragmentShader' ).textContent
+				});
+
+				// set up the sphere vars
+				var radius = 100, segments = 25, rings = 25;
+
+				// create a new mesh with sphere geometry -
+				// we will cover the sphereMaterial next!
+				var sphere = new THREE.Mesh(new THREE.SphereGeometry(radius, segments, rings), shaderMaterial);
+
+				var verts = sphere.geometry.vertices;
+				var values = attributes.displacement.value;
+
+				for(var v = 0; v < verts.length; v++) {
+					values.push(Math.random() * 20);
+				}
+
+				// add the sphere to the scene
+				scene.add(sphere);
+
+		        renderer = new THREE.WebGLRenderer();
+		        renderer.setSize(WIDTH, HEIGHT);
+
+		        $container.append(renderer.domElement);
+			}
+			var frame = 0;
+			function animate() {
+		        // note: three.js includes requestAnimationFrame shim
+		        requestAnimationFrame( animate );
+		        
+		        uniforms.amplitude.value = Math.sin(frame/5);
+
+				// update the frame counter
+				frame += 0.1;
+
+		        renderer.render( scene, camera );
+		    }
+	
+        </script>
+	</body>
+</html>

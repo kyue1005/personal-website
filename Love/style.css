@@ -1,0 +1,50 @@
+body{
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Romanesco', cursive;
+    width: 600px;
+    margin: 0 auto;
+    padding-top: 20px;
+    background: url(http://wonderworlds.org/images/snowflakes/snowflakes-paper-background-silver.jpg);
+}
+
+table{
+    margin: 20px auto;
+}
+
+td{
+    width: 20px;
+    height : 20px;
+    transition: all 2s;
+}
+/* elements */
+.container{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.red{
+    background-color: #ff0000;
+}
+.orange{
+    background-color: #ff7f00;
+}
+.yellow{
+    background-color: #ffff00;
+}
+.green{
+    background-color: #00ff00;
+}
+.cyan{
+    background-color: #0000ff;
+}
+.blue{
+    background-color: #4b0082;
+}
+.purple{
+    background-color: #8b00ff;
+}
+
+#counter{
+    font-size: 40px;
+}

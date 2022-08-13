@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="snakeApp">
+  <head>
+    <title>Kelvin Yue's Homepage</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--[if IE]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="Shortcut Icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css" title="" type="text/css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-68982593-1', 'auto');
+    
+    </script>
+  </head>
+  <body ng-controller="mainController">
+    <nav class="navbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="#about"><i class="fa fa-user"></i> About</a></li>
+          <li><a href="http://blog.snakeyue.com"><i class="fa fa-file-text"></i> Blog</a></li>
+          <li><a href="#project"><i class="fa fa-tasks"></i> Project</a></li>
+          <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
+        </ul>
+    </nav>
+    <div id="main">
+        <div ng-view></div>
+    </div>
+    
+    <!-- Credits to https://codepen.io/hendo13/pen/bLzAi -->
+    <script type="text/javascript" src="js/main.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/visual.js" charset="utf-8"></script>
+  </body>
+</html>

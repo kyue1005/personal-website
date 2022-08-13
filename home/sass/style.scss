@@ -1,0 +1,168 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/utilities/general/clearfix";
+@import "compass/css3/border-radius";
+
+html {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body{
+    background: #000;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: courier;
+    font-size: 16px;
+    color: rgba(67, 199, 40, 1);
+}
+
+header {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 0 10%;
+    align-items: center;
+    .text{
+        flex: 1 100%;
+        font-size: 2em;
+        text-align: center;
+    }
+}
+nav {
+    @include clearfix;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    margin-bottom: 10px;
+    padding-top: 20px;
+    text-align: center;
+    background-image: linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) );
+    
+    ul {
+        li {
+            display: inline-block;
+        }
+    }
+    a {
+        margin: 0 10px;
+        font-size: 1.2em;
+    }
+}
+
+canvas {
+    opacity: 0.4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+h1 {
+    font-size: 1.8em;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(67,199,40, 1);
+    margin-bottom: 10px;
+}
+
+a {
+    color: rgba(67, 199, 40, 1);
+    text-decoration: none;
+    &:hover {
+        color: rgba(67, 199, 40, 0.5);
+        text-shadow: 0 0 5px rgba(67, 199, 40, 0.5);
+    }
+}
+
+
+// Custom Element
+.container {
+    padding-top: 80px;
+}
+
+#main {
+    padding: 0 5%;
+    height: 100%;
+    &:after {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.2;
+        background-image: url('../images/bg.jpg');
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+    .ng-scope {
+        height: 100%;
+    }
+}
+// About page
+.about {
+    a {
+        color: #94FF7E;
+        text-decoration: underline;
+    }
+}
+
+// Project page
+.project {
+    h2 {
+        font-weight: bold;
+        text-decoration: underline;
+        text-shadow: 0 0 10px #43c728;
+        margin: 40px 0 10px 0;
+    }
+    
+    p {
+      margin-top: 30px;
+    }
+    
+    a {
+      display: block;
+      margin-top: 5px;
+    }
+}
+
+// Contact page
+.contact {
+    ul {
+        margin-top: 20px;
+        li {
+            margin-bottom: 10px;
+            i {
+                @include border-radius(16px);
+                width: 32px;
+                height: 32px;
+                border: 2px solid #43c728;
+                padding: 5px;
+                text-align: center;
+            }
+            &.github i {
+                font-size: 1.2em;
+            }
+        }
+    }
+}
